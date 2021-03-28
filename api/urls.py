@@ -7,5 +7,6 @@ urlpatterns = [
     path('fact-detail/<str:pk>/', views.fact_detail, name='fact-detail'),
     path('fact-create/', views.fact_create, name='fact-create'),
     path('fact-update/<str:pk>/', views.fact_update, name='fact-update'),
-    path('fact-delete/<str:pk>/', views.fact_delete, name='fact-delete')
+    path('fact-delete/<str:pk>/', views.fact_delete, name='fact-delete'),
+    path('fact-random/', views.fact_random, name='fact-random')
 ]

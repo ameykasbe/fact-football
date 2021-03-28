@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Fact
 from .serializers import FactSerializer
+import random
 
 
 @api_view(['GET'])
@@ -28,6 +29,14 @@ def fact_list(request):
 def fact_detail(request, pk):
     fact = Fact.objects.get(id=pk)
     serializer = FactSerializer(fact, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def fact_random(request):
+    facts = Fact.objects.all()
+    random_fact = random.choice(facts)
+    serializer = FactSerializer(random_fact, many=False)
     return Response(serializer.data)
 
 
