@@ -29,3 +29,11 @@ def fact_detail(request, pk):
     fact = Fact.objects.get(id=pk)
     serializer = FactSerializer(fact, many=False)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def fact_create(request):
+    serializer = FactSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)
