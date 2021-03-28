@@ -37,3 +37,14 @@ def fact_create(request):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def fact_update(request, pk):
+    fact = Fact.objects.get(id=pk)
+    serializer = FactSerializer(data=request.data, instance=fact)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
