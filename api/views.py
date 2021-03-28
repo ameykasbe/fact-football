@@ -48,3 +48,10 @@ def fact_update(request, pk):
         serializer.save()
 
     return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def fact_delete(request, pk):
+    fact = Fact.objects.get(id=pk)
+    fact.delete()
+    return Response('Fact deleted successfully!')
