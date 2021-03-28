@@ -22,3 +22,10 @@ def fact_list(request):
     facts = Fact.objects.all()
     serializer = FactSerializer(facts, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def fact_detail(request, pk):
+    fact = Fact.objects.get(id=pk)
+    serializer = FactSerializer(fact, many=False)
+    return Response(serializer.data)
