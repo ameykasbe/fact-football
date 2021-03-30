@@ -9,6 +9,7 @@ import random
 @api_view(['GET'])
 def api_overview(request):
     api_urls = {
+        'Random': '/fact-random/',
         'List': '/fact-list/',
         'Detail': '/fact-detail/<str:pk>',
         'Create': '/fact-create/',
